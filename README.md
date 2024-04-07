@@ -1,8 +1,8 @@
 # Crawling_Covid_Stat-main
 Team Members 
 Jadi Ajay (implemented module2 and module3.2- (1,2) )
-Surajit Halder Kiran (implemented module1 and module 5)
-Rohan Kadir Khan (implemented module 3.1, module 3.2-(3,4,5), module-4)
+Surajit Halder (implemented module1 and module 5)
+Rohan Khadir Khan (implemented module 3.1, module 3.2-(3,4,5), module-4)
 
 
 Execution for Module 3 and 4:
