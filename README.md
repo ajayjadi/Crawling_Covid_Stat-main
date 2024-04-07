@@ -1,9 +1,9 @@
 # Crawling_Covid_Stat-main
 Team Members 
-Jadi Ajay (implemented module2 and module3.2- (1,2) )
-Surajit Halder (implemented module1 and module 5)
-Rohan Khadir Khan (implemented module 3.1, module 3.2-(3,4,5), module-4)
-
+Rohan Khadir Khan (implemented module1 )
+Surajit Halder (implemented module2)
+Jadi Ajay (implemented module 3.1, module 3.2-(3,4,5), module-4)
+Rishab Benerjee (module 5)
 
 Execution for Module 3 and 4:
 python3 run.py in Crawling_Covid_stat directory
