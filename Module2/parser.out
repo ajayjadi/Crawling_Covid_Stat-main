@@ -1,0 +1,591 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> start
+Rule 1     start -> table
+Rule 2     skiptag -> content skiptag
+Rule 3     skiptag -> GARBAGE skiptag
+Rule 4     skiptag -> H2SPAN skiptag
+Rule 5     skiptag -> H3SPAN skiptag
+Rule 6     skiptag -> empty
+Rule 7     handleh2span -> H2SPAN CONTENT content
+Rule 8     handleh2span -> H2SPAN content
+Rule 9     handleh4span -> H3SPAN CONTENT content
+Rule 10    handledata -> handleh2span handleh4span
+Rule 11    handledata -> handleh2span
+Rule 12    handledata -> handleh4span
+Rule 13    handlehead -> handledata handlehead
+Rule 14    handlehead -> <empty>
+Rule 15    table -> skiptag BEGINTABLE content handlehead ENDTABLE skiptag
+Rule 16    empty -> <empty>
+Rule 17    content -> CONTENT content
+Rule 18    content -> empty
+
+Terminals, with rules where they appear
+
+BEGINTABLE           : 15
+CONTENT              : 7 9 17
+ENDTABLE             : 15
+GARBAGE              : 3
+H2SPAN               : 4 7 8
+H3SPAN               : 5 9
+error                : 
+
+Nonterminals, with rules where they appear
+
+content              : 2 7 8 9 15 17
+empty                : 6 18
+handledata           : 13
+handleh2span         : 10 11
+handleh4span         : 10 12
+handlehead           : 13 15
+skiptag              : 2 3 4 5 15 15
+start                : 0
+table                : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . start
+    (1) start -> . table
+    (15) table -> . skiptag BEGINTABLE content handlehead ENDTABLE skiptag
+    (2) skiptag -> . content skiptag
+    (3) skiptag -> . GARBAGE skiptag
+    (4) skiptag -> . H2SPAN skiptag
+    (5) skiptag -> . H3SPAN skiptag
+    (6) skiptag -> . empty
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+  ! shift/reduce conflict for GARBAGE resolved as shift
+  ! shift/reduce conflict for H2SPAN resolved as shift
+  ! shift/reduce conflict for H3SPAN resolved as shift
+  ! shift/reduce conflict for CONTENT resolved as shift
+    GARBAGE         shift and go to state 5
+    H2SPAN          shift and go to state 6
+    H3SPAN          shift and go to state 7
+    CONTENT         shift and go to state 9
+    BEGINTABLE      reduce using rule 16 (empty -> .)
+
+  ! GARBAGE         [ reduce using rule 16 (empty -> .) ]
+  ! H2SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! H3SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! CONTENT         [ reduce using rule 16 (empty -> .) ]
+
+    start                          shift and go to state 1
+    table                          shift and go to state 2
+    skiptag                        shift and go to state 3
+    content                        shift and go to state 4
+    empty                          shift and go to state 8
+
+state 1
+
+    (0) S' -> start .
+
+
+
+state 2
+
+    (1) start -> table .
+
+    $end            reduce using rule 1 (start -> table .)
+
+
+state 3
+
+    (15) table -> skiptag . BEGINTABLE content handlehead ENDTABLE skiptag
+
+    BEGINTABLE      shift and go to state 10
+
+
+state 4
+
+    (2) skiptag -> content . skiptag
+    (2) skiptag -> . content skiptag
+    (3) skiptag -> . GARBAGE skiptag
+    (4) skiptag -> . H2SPAN skiptag
+    (5) skiptag -> . H3SPAN skiptag
+    (6) skiptag -> . empty
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+  ! shift/reduce conflict for GARBAGE resolved as shift
+  ! shift/reduce conflict for H2SPAN resolved as shift
+  ! shift/reduce conflict for H3SPAN resolved as shift
+  ! shift/reduce conflict for CONTENT resolved as shift
+    GARBAGE         shift and go to state 5
+    H2SPAN          shift and go to state 6
+    H3SPAN          shift and go to state 7
+    CONTENT         shift and go to state 9
+    BEGINTABLE      reduce using rule 16 (empty -> .)
+    $end            reduce using rule 16 (empty -> .)
+
+  ! GARBAGE         [ reduce using rule 16 (empty -> .) ]
+  ! H2SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! H3SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! CONTENT         [ reduce using rule 16 (empty -> .) ]
+
+    content                        shift and go to state 4
+    skiptag                        shift and go to state 11
+    empty                          shift and go to state 8
+
+state 5
+
+    (3) skiptag -> GARBAGE . skiptag
+    (2) skiptag -> . content skiptag
+    (3) skiptag -> . GARBAGE skiptag
+    (4) skiptag -> . H2SPAN skiptag
+    (5) skiptag -> . H3SPAN skiptag
+    (6) skiptag -> . empty
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+  ! shift/reduce conflict for GARBAGE resolved as shift
+  ! shift/reduce conflict for H2SPAN resolved as shift
+  ! shift/reduce conflict for H3SPAN resolved as shift
+  ! shift/reduce conflict for CONTENT resolved as shift
+    GARBAGE         shift and go to state 5
+    H2SPAN          shift and go to state 6
+    H3SPAN          shift and go to state 7
+    CONTENT         shift and go to state 9
+    BEGINTABLE      reduce using rule 16 (empty -> .)
+    $end            reduce using rule 16 (empty -> .)
+
+  ! GARBAGE         [ reduce using rule 16 (empty -> .) ]
+  ! H2SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! H3SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! CONTENT         [ reduce using rule 16 (empty -> .) ]
+
+    skiptag                        shift and go to state 12
+    content                        shift and go to state 4
+    empty                          shift and go to state 8
+
+state 6
+
+    (4) skiptag -> H2SPAN . skiptag
+    (2) skiptag -> . content skiptag
+    (3) skiptag -> . GARBAGE skiptag
+    (4) skiptag -> . H2SPAN skiptag
+    (5) skiptag -> . H3SPAN skiptag
+    (6) skiptag -> . empty
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+  ! shift/reduce conflict for GARBAGE resolved as shift
+  ! shift/reduce conflict for H2SPAN resolved as shift
+  ! shift/reduce conflict for H3SPAN resolved as shift
+  ! shift/reduce conflict for CONTENT resolved as shift
+    GARBAGE         shift and go to state 5
+    H2SPAN          shift and go to state 6
+    H3SPAN          shift and go to state 7
+    CONTENT         shift and go to state 9
+    BEGINTABLE      reduce using rule 16 (empty -> .)
+    $end            reduce using rule 16 (empty -> .)
+
+  ! GARBAGE         [ reduce using rule 16 (empty -> .) ]
+  ! H2SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! H3SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! CONTENT         [ reduce using rule 16 (empty -> .) ]
+
+    skiptag                        shift and go to state 13
+    content                        shift and go to state 4
+    empty                          shift and go to state 8
+
+state 7
+
+    (5) skiptag -> H3SPAN . skiptag
+    (2) skiptag -> . content skiptag
+    (3) skiptag -> . GARBAGE skiptag
+    (4) skiptag -> . H2SPAN skiptag
+    (5) skiptag -> . H3SPAN skiptag
+    (6) skiptag -> . empty
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+  ! shift/reduce conflict for GARBAGE resolved as shift
+  ! shift/reduce conflict for H2SPAN resolved as shift
+  ! shift/reduce conflict for H3SPAN resolved as shift
+  ! shift/reduce conflict for CONTENT resolved as shift
+    GARBAGE         shift and go to state 5
+    H2SPAN          shift and go to state 6
+    H3SPAN          shift and go to state 7
+    CONTENT         shift and go to state 9
+    BEGINTABLE      reduce using rule 16 (empty -> .)
+    $end            reduce using rule 16 (empty -> .)
+
+  ! GARBAGE         [ reduce using rule 16 (empty -> .) ]
+  ! H2SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! H3SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! CONTENT         [ reduce using rule 16 (empty -> .) ]
+
+    skiptag                        shift and go to state 14
+    content                        shift and go to state 4
+    empty                          shift and go to state 8
+
+state 8
+
+    (6) skiptag -> empty .
+    (18) content -> empty .
+
+  ! reduce/reduce conflict for BEGINTABLE resolved using rule 6 (skiptag -> empty .)
+  ! reduce/reduce conflict for $end resolved using rule 6 (skiptag -> empty .)
+    BEGINTABLE      reduce using rule 6 (skiptag -> empty .)
+    $end            reduce using rule 6 (skiptag -> empty .)
+    GARBAGE         reduce using rule 18 (content -> empty .)
+    H2SPAN          reduce using rule 18 (content -> empty .)
+    H3SPAN          reduce using rule 18 (content -> empty .)
+    CONTENT         reduce using rule 18 (content -> empty .)
+
+  ! BEGINTABLE      [ reduce using rule 18 (content -> empty .) ]
+  ! $end            [ reduce using rule 18 (content -> empty .) ]
+
+
+state 9
+
+    (17) content -> CONTENT . content
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+  ! shift/reduce conflict for CONTENT resolved as shift
+    CONTENT         shift and go to state 9
+    GARBAGE         reduce using rule 16 (empty -> .)
+    H2SPAN          reduce using rule 16 (empty -> .)
+    H3SPAN          reduce using rule 16 (empty -> .)
+    BEGINTABLE      reduce using rule 16 (empty -> .)
+    $end            reduce using rule 16 (empty -> .)
+    ENDTABLE        reduce using rule 16 (empty -> .)
+
+  ! CONTENT         [ reduce using rule 16 (empty -> .) ]
+
+    content                        shift and go to state 15
+    empty                          shift and go to state 16
+
+state 10
+
+    (15) table -> skiptag BEGINTABLE . content handlehead ENDTABLE skiptag
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+    CONTENT         shift and go to state 9
+    H2SPAN          reduce using rule 16 (empty -> .)
+    H3SPAN          reduce using rule 16 (empty -> .)
+    ENDTABLE        reduce using rule 16 (empty -> .)
+
+    content                        shift and go to state 17
+    empty                          shift and go to state 16
+
+state 11
+
+    (2) skiptag -> content skiptag .
+
+    BEGINTABLE      reduce using rule 2 (skiptag -> content skiptag .)
+    $end            reduce using rule 2 (skiptag -> content skiptag .)
+
+
+state 12
+
+    (3) skiptag -> GARBAGE skiptag .
+
+    BEGINTABLE      reduce using rule 3 (skiptag -> GARBAGE skiptag .)
+    $end            reduce using rule 3 (skiptag -> GARBAGE skiptag .)
+
+
+state 13
+
+    (4) skiptag -> H2SPAN skiptag .
+
+    BEGINTABLE      reduce using rule 4 (skiptag -> H2SPAN skiptag .)
+    $end            reduce using rule 4 (skiptag -> H2SPAN skiptag .)
+
+
+state 14
+
+    (5) skiptag -> H3SPAN skiptag .
+
+    BEGINTABLE      reduce using rule 5 (skiptag -> H3SPAN skiptag .)
+    $end            reduce using rule 5 (skiptag -> H3SPAN skiptag .)
+
+
+state 15
+
+    (17) content -> CONTENT content .
+
+    GARBAGE         reduce using rule 17 (content -> CONTENT content .)
+    H2SPAN          reduce using rule 17 (content -> CONTENT content .)
+    H3SPAN          reduce using rule 17 (content -> CONTENT content .)
+    CONTENT         reduce using rule 17 (content -> CONTENT content .)
+    BEGINTABLE      reduce using rule 17 (content -> CONTENT content .)
+    $end            reduce using rule 17 (content -> CONTENT content .)
+    ENDTABLE        reduce using rule 17 (content -> CONTENT content .)
+
+
+state 16
+
+    (18) content -> empty .
+
+    GARBAGE         reduce using rule 18 (content -> empty .)
+    H2SPAN          reduce using rule 18 (content -> empty .)
+    H3SPAN          reduce using rule 18 (content -> empty .)
+    CONTENT         reduce using rule 18 (content -> empty .)
+    BEGINTABLE      reduce using rule 18 (content -> empty .)
+    $end            reduce using rule 18 (content -> empty .)
+    ENDTABLE        reduce using rule 18 (content -> empty .)
+
+
+state 17
+
+    (15) table -> skiptag BEGINTABLE content . handlehead ENDTABLE skiptag
+    (13) handlehead -> . handledata handlehead
+    (14) handlehead -> .
+    (10) handledata -> . handleh2span handleh4span
+    (11) handledata -> . handleh2span
+    (12) handledata -> . handleh4span
+    (7) handleh2span -> . H2SPAN CONTENT content
+    (8) handleh2span -> . H2SPAN content
+    (9) handleh4span -> . H3SPAN CONTENT content
+
+    ENDTABLE        reduce using rule 14 (handlehead -> .)
+    H2SPAN          shift and go to state 22
+    H3SPAN          shift and go to state 23
+
+    handlehead                     shift and go to state 18
+    handledata                     shift and go to state 19
+    handleh2span                   shift and go to state 20
+    handleh4span                   shift and go to state 21
+
+state 18
+
+    (15) table -> skiptag BEGINTABLE content handlehead . ENDTABLE skiptag
+
+    ENDTABLE        shift and go to state 24
+
+
+state 19
+
+    (13) handlehead -> handledata . handlehead
+    (13) handlehead -> . handledata handlehead
+    (14) handlehead -> .
+    (10) handledata -> . handleh2span handleh4span
+    (11) handledata -> . handleh2span
+    (12) handledata -> . handleh4span
+    (7) handleh2span -> . H2SPAN CONTENT content
+    (8) handleh2span -> . H2SPAN content
+    (9) handleh4span -> . H3SPAN CONTENT content
+
+    ENDTABLE        reduce using rule 14 (handlehead -> .)
+    H2SPAN          shift and go to state 22
+    H3SPAN          shift and go to state 23
+
+    handledata                     shift and go to state 19
+    handlehead                     shift and go to state 25
+    handleh2span                   shift and go to state 20
+    handleh4span                   shift and go to state 21
+
+state 20
+
+    (10) handledata -> handleh2span . handleh4span
+    (11) handledata -> handleh2span .
+    (9) handleh4span -> . H3SPAN CONTENT content
+
+  ! shift/reduce conflict for H3SPAN resolved as shift
+    H2SPAN          reduce using rule 11 (handledata -> handleh2span .)
+    ENDTABLE        reduce using rule 11 (handledata -> handleh2span .)
+    H3SPAN          shift and go to state 23
+
+  ! H3SPAN          [ reduce using rule 11 (handledata -> handleh2span .) ]
+
+    handleh4span                   shift and go to state 26
+
+state 21
+
+    (12) handledata -> handleh4span .
+
+    H2SPAN          reduce using rule 12 (handledata -> handleh4span .)
+    H3SPAN          reduce using rule 12 (handledata -> handleh4span .)
+    ENDTABLE        reduce using rule 12 (handledata -> handleh4span .)
+
+
+state 22
+
+    (7) handleh2span -> H2SPAN . CONTENT content
+    (8) handleh2span -> H2SPAN . content
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+    CONTENT         shift and go to state 27
+    H3SPAN          reduce using rule 16 (empty -> .)
+    H2SPAN          reduce using rule 16 (empty -> .)
+    ENDTABLE        reduce using rule 16 (empty -> .)
+
+    content                        shift and go to state 28
+    empty                          shift and go to state 16
+
+state 23
+
+    (9) handleh4span -> H3SPAN . CONTENT content
+
+    CONTENT         shift and go to state 29
+
+
+state 24
+
+    (15) table -> skiptag BEGINTABLE content handlehead ENDTABLE . skiptag
+    (2) skiptag -> . content skiptag
+    (3) skiptag -> . GARBAGE skiptag
+    (4) skiptag -> . H2SPAN skiptag
+    (5) skiptag -> . H3SPAN skiptag
+    (6) skiptag -> . empty
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+  ! shift/reduce conflict for GARBAGE resolved as shift
+  ! shift/reduce conflict for H2SPAN resolved as shift
+  ! shift/reduce conflict for H3SPAN resolved as shift
+  ! shift/reduce conflict for CONTENT resolved as shift
+    GARBAGE         shift and go to state 5
+    H2SPAN          shift and go to state 6
+    H3SPAN          shift and go to state 7
+    CONTENT         shift and go to state 9
+    $end            reduce using rule 16 (empty -> .)
+
+  ! GARBAGE         [ reduce using rule 16 (empty -> .) ]
+  ! H2SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! H3SPAN          [ reduce using rule 16 (empty -> .) ]
+  ! CONTENT         [ reduce using rule 16 (empty -> .) ]
+
+    skiptag                        shift and go to state 30
+    content                        shift and go to state 4
+    empty                          shift and go to state 8
+
+state 25
+
+    (13) handlehead -> handledata handlehead .
+
+    ENDTABLE        reduce using rule 13 (handlehead -> handledata handlehead .)
+
+
+state 26
+
+    (10) handledata -> handleh2span handleh4span .
+
+    H2SPAN          reduce using rule 10 (handledata -> handleh2span handleh4span .)
+    H3SPAN          reduce using rule 10 (handledata -> handleh2span handleh4span .)
+    ENDTABLE        reduce using rule 10 (handledata -> handleh2span handleh4span .)
+
+
+state 27
+
+    (7) handleh2span -> H2SPAN CONTENT . content
+    (17) content -> CONTENT . content
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+    CONTENT         shift and go to state 9
+    H3SPAN          reduce using rule 16 (empty -> .)
+    H2SPAN          reduce using rule 16 (empty -> .)
+    ENDTABLE        reduce using rule 16 (empty -> .)
+
+    content                        shift and go to state 31
+    empty                          shift and go to state 16
+
+state 28
+
+    (8) handleh2span -> H2SPAN content .
+
+    H3SPAN          reduce using rule 8 (handleh2span -> H2SPAN content .)
+    H2SPAN          reduce using rule 8 (handleh2span -> H2SPAN content .)
+    ENDTABLE        reduce using rule 8 (handleh2span -> H2SPAN content .)
+
+
+state 29
+
+    (9) handleh4span -> H3SPAN CONTENT . content
+    (17) content -> . CONTENT content
+    (18) content -> . empty
+    (16) empty -> .
+
+    CONTENT         shift and go to state 9
+    H2SPAN          reduce using rule 16 (empty -> .)
+    H3SPAN          reduce using rule 16 (empty -> .)
+    ENDTABLE        reduce using rule 16 (empty -> .)
+
+    content                        shift and go to state 32
+    empty                          shift and go to state 16
+
+state 30
+
+    (15) table -> skiptag BEGINTABLE content handlehead ENDTABLE skiptag .
+
+    $end            reduce using rule 15 (table -> skiptag BEGINTABLE content handlehead ENDTABLE skiptag .)
+
+
+state 31
+
+    (7) handleh2span -> H2SPAN CONTENT content .
+    (17) content -> CONTENT content .
+
+  ! reduce/reduce conflict for H3SPAN resolved using rule 7 (handleh2span -> H2SPAN CONTENT content .)
+  ! reduce/reduce conflict for H2SPAN resolved using rule 7 (handleh2span -> H2SPAN CONTENT content .)
+  ! reduce/reduce conflict for ENDTABLE resolved using rule 7 (handleh2span -> H2SPAN CONTENT content .)
+    H3SPAN          reduce using rule 7 (handleh2span -> H2SPAN CONTENT content .)
+    H2SPAN          reduce using rule 7 (handleh2span -> H2SPAN CONTENT content .)
+    ENDTABLE        reduce using rule 7 (handleh2span -> H2SPAN CONTENT content .)
+
+  ! H3SPAN          [ reduce using rule 17 (content -> CONTENT content .) ]
+  ! H2SPAN          [ reduce using rule 17 (content -> CONTENT content .) ]
+  ! ENDTABLE        [ reduce using rule 17 (content -> CONTENT content .) ]
+
+
+state 32
+
+    (9) handleh4span -> H3SPAN CONTENT content .
+
+    H2SPAN          reduce using rule 9 (handleh4span -> H3SPAN CONTENT content .)
+    H3SPAN          reduce using rule 9 (handleh4span -> H3SPAN CONTENT content .)
+    ENDTABLE        reduce using rule 9 (handleh4span -> H3SPAN CONTENT content .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for GARBAGE in state 0 resolved as shift
+WARNING: shift/reduce conflict for H2SPAN in state 0 resolved as shift
+WARNING: shift/reduce conflict for H3SPAN in state 0 resolved as shift
+WARNING: shift/reduce conflict for CONTENT in state 0 resolved as shift
+WARNING: shift/reduce conflict for GARBAGE in state 4 resolved as shift
+WARNING: shift/reduce conflict for H2SPAN in state 4 resolved as shift
+WARNING: shift/reduce conflict for H3SPAN in state 4 resolved as shift
+WARNING: shift/reduce conflict for CONTENT in state 4 resolved as shift
+WARNING: shift/reduce conflict for GARBAGE in state 5 resolved as shift
+WARNING: shift/reduce conflict for H2SPAN in state 5 resolved as shift
+WARNING: shift/reduce conflict for H3SPAN in state 5 resolved as shift
+WARNING: shift/reduce conflict for CONTENT in state 5 resolved as shift
+WARNING: shift/reduce conflict for GARBAGE in state 6 resolved as shift
+WARNING: shift/reduce conflict for H2SPAN in state 6 resolved as shift
+WARNING: shift/reduce conflict for H3SPAN in state 6 resolved as shift
+WARNING: shift/reduce conflict for CONTENT in state 6 resolved as shift
+WARNING: shift/reduce conflict for GARBAGE in state 7 resolved as shift
+WARNING: shift/reduce conflict for H2SPAN in state 7 resolved as shift
+WARNING: shift/reduce conflict for H3SPAN in state 7 resolved as shift
+WARNING: shift/reduce conflict for CONTENT in state 7 resolved as shift
+WARNING: shift/reduce conflict for CONTENT in state 9 resolved as shift
+WARNING: shift/reduce conflict for H3SPAN in state 20 resolved as shift
+WARNING: shift/reduce conflict for GARBAGE in state 24 resolved as shift
+WARNING: shift/reduce conflict for H2SPAN in state 24 resolved as shift
+WARNING: shift/reduce conflict for H3SPAN in state 24 resolved as shift
+WARNING: shift/reduce conflict for CONTENT in state 24 resolved as shift
+WARNING: reduce/reduce conflict in state 8 resolved using rule (skiptag -> empty)
+WARNING: rejected rule (content -> empty) in state 8
+WARNING: reduce/reduce conflict in state 31 resolved using rule (handleh2span -> H2SPAN CONTENT content)
+WARNING: rejected rule (content -> CONTENT content) in state 31
